@@ -8,18 +8,460 @@
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="ansi (v1.5.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, RVM: ruby-2.7.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.3.9, RVM: ruby-2.7.5) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.8.1, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="docile (v1.4.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hoe-markdown (v1.4.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.8.5, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.17.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest-reporters (v1.5.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.2, RVM: ruby-2.7.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.7.3, RVM: ruby-2.7.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake-compiler (v1.2.1, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake-compiler-dock (v1.3.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.5.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexical (v1.0.7, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby_memcheck (v1.2.0, RVM: ruby-2.7.5) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.21.2, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.3, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.4, RVM: ruby-2.7.5) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.0, RVM: ruby-2.7.5) [gem]" level="application" />
   </component>
   <component name="RakeTasksCache">
     <option name="myRootTask">
-      <RakeTaskImpl id="rake" />
+      <RakeTaskImpl id="rake">
+        <subtasks>
+          <RakeTaskImpl id="cext">
+            <subtasks>
+              <RakeTaskImpl description="Regenerate C extension dependencies in ext/nokogiri/depend" fullCommand="cext:depend" id="depend" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Perform a sanity check on the gemspec file list" fullCommand="check_manifest[verbose]" id="check_manifest[verbose]" />
+          <RakeTaskImpl description="Remove any temporary products" fullCommand="clean" id="clean" />
+          <RakeTaskImpl description="Remove any generated files" fullCommand="clobber" id="clobber" />
+          <RakeTaskImpl description="Remove package products" fullCommand="clobber_package" id="clobber_package" />
+          <RakeTaskImpl id="compile">
+            <subtasks>
+              <RakeTaskImpl description="Compile nokogiri" fullCommand="compile:nokogiri" id="nokogiri" />
+              <RakeTaskImpl id="nokogiri">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="compile:nokogiri:x86_64-darwin20" id="x86_64-darwin20" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="" fullCommand="compile:x86_64-darwin20" id="x86_64-darwin20" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="css">
+            <subtasks>
+              <RakeTaskImpl description="Clean up generated CSS parser and tokenizer" fullCommand="css:clean" id="clean" />
+              <RakeTaskImpl description="Generate CSS parser and tokenizer" fullCommand="css:generate" id="generate" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Build and push a docker image for testing" fullCommand="docker" id="docker" />
+          <RakeTaskImpl id="docker">
+            <subtasks>
+              <RakeTaskImpl description="Build docker images for testing" fullCommand="docker:build" id="build" />
+              <RakeTaskImpl description="Generate Dockerfiles" fullCommand="docker:generate" id="generate" />
+              <RakeTaskImpl description="Generate an Actions pipeline to take care of everything" fullCommand="docker:pipeline" id="pipeline" />
+              <RakeTaskImpl description="Pull upstream docker images" fullCommand="docker:pull" id="pull" />
+              <RakeTaskImpl description="Push a docker image for testing" fullCommand="docker:push" id="push" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="format">
+            <subtasks>
+              <RakeTaskImpl description="Format Nokogiri's C code" fullCommand="format:c" id="c" />
+              <RakeTaskImpl description="Format Nokogiri's Java code" fullCommand="format:java" id="java" />
+              <RakeTaskImpl description="Format Nokogiri's Ruby code" fullCommand="format:ruby" id="ruby" />
+              <RakeTaskImpl description="Regenerate tables of contents in some files" fullCommand="format:toc" id="toc" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Build the gem file nokogiri-1.14.3.gem" fullCommand="gem" id="gem" />
+          <RakeTaskImpl id="gem">
+            <subtasks>
+              <RakeTaskImpl description="build native gem for aarch64-linux platform" fullCommand="gem:aarch64-linux" id="aarch64-linux" />
+              <RakeTaskImpl id="aarch64-linux">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for aarch64-linux platform (guest container)" fullCommand="gem:aarch64-linux:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for arm-linux platform" fullCommand="gem:arm-linux" id="arm-linux" />
+              <RakeTaskImpl id="arm-linux">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for arm-linux platform (guest container)" fullCommand="gem:arm-linux:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for arm64-darwin platform" fullCommand="gem:arm64-darwin" id="arm64-darwin" />
+              <RakeTaskImpl id="arm64-darwin">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for arm64-darwin platform (guest container)" fullCommand="gem:arm64-darwin:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gems for darwin" fullCommand="gem:darwin" id="darwin" />
+              <RakeTaskImpl description="build a jruby gem" fullCommand="gem:jruby" id="jruby" />
+              <RakeTaskImpl description="build native gems for linux" fullCommand="gem:linux" id="linux" />
+              <RakeTaskImpl description="build native gems for windows" fullCommand="gem:windows" id="windows" />
+              <RakeTaskImpl description="build native gem for x64-mingw-ucrt platform" fullCommand="gem:x64-mingw-ucrt" id="x64-mingw-ucrt" />
+              <RakeTaskImpl id="x64-mingw-ucrt">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x64-mingw-ucrt platform (guest container)" fullCommand="gem:x64-mingw-ucrt:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for x64-mingw32 platform" fullCommand="gem:x64-mingw32" id="x64-mingw32" />
+              <RakeTaskImpl id="x64-mingw32">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x64-mingw32 platform (guest container)" fullCommand="gem:x64-mingw32:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for x86-linux platform" fullCommand="gem:x86-linux" id="x86-linux" />
+              <RakeTaskImpl id="x86-linux">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x86-linux platform (guest container)" fullCommand="gem:x86-linux:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for x86-mingw32 platform" fullCommand="gem:x86-mingw32" id="x86-mingw32" />
+              <RakeTaskImpl id="x86-mingw32">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x86-mingw32 platform (guest container)" fullCommand="gem:x86-mingw32:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for x86_64-darwin platform" fullCommand="gem:x86_64-darwin" id="x86_64-darwin" />
+              <RakeTaskImpl id="x86_64-darwin">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x86_64-darwin platform (guest container)" fullCommand="gem:x86_64-darwin:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="build native gem for x86_64-linux platform" fullCommand="gem:x86_64-linux" id="x86_64-linux" />
+              <RakeTaskImpl id="x86_64-linux">
+                <subtasks>
+                  <RakeTaskImpl description="build native gem for x86_64-linux platform (guest container)" fullCommand="gem:x86_64-linux:builder" id="builder" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Run the gumbo parser test suite" fullCommand="gumbo" id="gumbo" />
+          <RakeTaskImpl id="gumbo">
+            <subtasks>
+              <RakeTaskImpl description="Clean up after the gumbo parser test suite" fullCommand="gumbo:clean" id="clean" />
+              <RakeTaskImpl description="Run the gumbo parser test suite" fullCommand="gumbo:test" id="test" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="markdown">
+            <subtasks>
+              <RakeTaskImpl description="hyperlink github issues and usernames in markdown files" fullCommand="markdown:linkify" id="linkify" />
+              <RakeTaskImpl id="linkify">
+                <subtasks>
+                  <RakeTaskImpl description="hyperlink github issues and usernames in CHANGELOG.md" fullCommand="markdown:linkify:changelog" id="changelog" />
+                  <RakeTaskImpl description="hyperlink github issues and usernames in CHANGES.md" fullCommand="markdown:linkify:changes" id="changes" />
+                  <RakeTaskImpl description="hyperlink github issues and usernames in CONTRIBUTING.md" fullCommand="markdown:linkify:contributing" id="contributing" />
+                  <RakeTaskImpl description="hyperlink github issues and usernames in LICENSE.md" fullCommand="markdown:linkify:license" id="license" />
+                  <RakeTaskImpl description="hyperlink github issues and usernames in LICENSE-DEPENDENCIES.md" fullCommand="markdown:linkify:license-dependencies" id="license-dependencies" />
+                  <RakeTaskImpl description="hyperlink github issues and usernames in README.md" fullCommand="markdown:linkify:readme" id="readme" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Build all the packages" fullCommand="package" id="package" />
+          <RakeTaskImpl description="Build RDoc HTML files" fullCommand="rdoc" id="rdoc" />
+          <RakeTaskImpl id="rdoc">
+            <subtasks>
+              <RakeTaskImpl description="Remove RDoc HTML files" fullCommand="rdoc:clean" id="clean" />
+              <RakeTaskImpl description="Rebuild RDoc HTML files" fullCommand="rdoc:force" id="force" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="Force a rebuild of the package files" fullCommand="repackage" id="repackage" />
+          <RakeTaskImpl description="Temporarily set Nokogiri::VERSION to a unique timestamp" fullCommand="set-version-to-timestamp" id="set-version-to-timestamp" />
+          <RakeTaskImpl description="Run tests" fullCommand="test" id="test" />
+          <RakeTaskImpl id="test">
+            <subtasks>
+              <RakeTaskImpl description="Run tests for bench" fullCommand="test:bench" id="bench" />
+              <RakeTaskImpl description="Run tests for gdb" fullCommand="test:gdb" id="gdb" />
+              <RakeTaskImpl description="Run tests for lldb" fullCommand="test:lldb" id="lldb" />
+              <RakeTaskImpl description="Run tests for memcheck" fullCommand="test:memcheck" id="memcheck" />
+              <RakeTaskImpl description="Run tests for valgrind" fullCommand="test:valgrind" id="valgrind" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="check_manifest" id="check_manifest" />
+          <RakeTaskImpl description="" fullCommand="compile" id="compile" />
+          <RakeTaskImpl id="copy">
+            <subtasks>
+              <RakeTaskImpl id="nokogiri">
+                <subtasks>
+                  <RakeTaskImpl id="x86_64-darwin20">
+                    <subtasks>
+                      <RakeTaskImpl description="" fullCommand="copy:nokogiri:x86_64-darwin20:2.7.5" id="2.7.5" />
+                    </subtasks>
+                  </RakeTaskImpl>
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="cross" id="cross" />
+          <RakeTaskImpl description="" fullCommand="default" id="default" />
+          <RakeTaskImpl description="" fullCommand="format" id="format" />
+          <RakeTaskImpl description="" fullCommand="gumbo-parser/googletest" id="gumbo-parser/googletest" />
+          <RakeTaskImpl description="" fullCommand="gumbo-parser/googletest/make/gtest_main.a" id="gumbo-parser/googletest/make/gtest_main.a" />
+          <RakeTaskImpl description="" fullCommand="html" id="html" />
+          <RakeTaskImpl description="" fullCommand="html/created.rid" id="html/created.rid" />
+          <RakeTaskImpl description="" fullCommand="java_debug" id="java_debug" />
+          <RakeTaskImpl description="" fullCommand="lib" id="lib" />
+          <RakeTaskImpl description="" fullCommand="lib/nokogiri" id="lib/nokogiri" />
+          <RakeTaskImpl description="" fullCommand="lib/nokogiri/css/parser.rb" id="lib/nokogiri/css/parser.rb" />
+          <RakeTaskImpl description="" fullCommand="lib/nokogiri/css/tokenizer.rb" id="lib/nokogiri/css/tokenizer.rb" />
+          <RakeTaskImpl description="" fullCommand="lib/nokogiri/nokogiri.bundle" id="lib/nokogiri/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="native" id="native" />
+          <RakeTaskImpl id="native">
+            <subtasks>
+              <RakeTaskImpl description="" fullCommand="native:nokogiri" id="nokogiri" />
+              <RakeTaskImpl id="nokogiri">
+                <subtasks>
+                  <RakeTaskImpl description="" fullCommand="native:nokogiri:x86_64-darwin20" id="x86_64-darwin20" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl description="" fullCommand="native:x86_64-darwin20" id="x86_64-darwin20" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl description="" fullCommand="pkg" id="pkg" />
+          <RakeTaskImpl description="" fullCommand="pkg/nokogiri-1.14.3" id="pkg/nokogiri-1.14.3" />
+          <RakeTaskImpl description="" fullCommand="pkg/nokogiri-1.14.3.gem" id="pkg/nokogiri-1.14.3.gem" />
+          <RakeTaskImpl description="" fullCommand="tmp" id="tmp" />
+          <RakeTaskImpl description="" fullCommand="tmp/aarch64-linux/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/aarch64-linux/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/aarch64-linux/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/aarch64-linux/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/aarch64-linux/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/aarch64-linux/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/aarch64-linux/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/aarch64-linux/stage/lib/nokogiri/3.2/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm-linux/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/arm-linux/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm-linux/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/arm-linux/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm-linux/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/arm-linux/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm-linux/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/arm-linux/stage/lib/nokogiri/3.2/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm64-darwin/stage/lib/nokogiri/2.7/nokogiri.bundle" id="tmp/arm64-darwin/stage/lib/nokogiri/2.7/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm64-darwin/stage/lib/nokogiri/3.0/nokogiri.bundle" id="tmp/arm64-darwin/stage/lib/nokogiri/3.0/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm64-darwin/stage/lib/nokogiri/3.1/nokogiri.bundle" id="tmp/arm64-darwin/stage/lib/nokogiri/3.1/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/arm64-darwin/stage/lib/nokogiri/3.2/nokogiri.bundle" id="tmp/arm64-darwin/stage/lib/nokogiri/3.2/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x64-mingw-ucrt/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/x64-mingw-ucrt/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x64-mingw-ucrt/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/x64-mingw-ucrt/stage/lib/nokogiri/3.2/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x64-mingw32/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/x64-mingw32/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x64-mingw32/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/x64-mingw32/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-linux/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/x86-linux/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-linux/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/x86-linux/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-linux/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/x86-linux/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-linux/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/x86-linux/stage/lib/nokogiri/3.2/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-mingw32/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/x86-mingw32/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-mingw32/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/x86-mingw32/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-mingw32/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/x86-mingw32/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86-mingw32/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/x86-mingw32/stage/lib/nokogiri/3.2/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin/stage/lib/nokogiri/2.7/nokogiri.bundle" id="tmp/x86_64-darwin/stage/lib/nokogiri/2.7/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin/stage/lib/nokogiri/3.0/nokogiri.bundle" id="tmp/x86_64-darwin/stage/lib/nokogiri/3.0/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin/stage/lib/nokogiri/3.1/nokogiri.bundle" id="tmp/x86_64-darwin/stage/lib/nokogiri/3.1/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin/stage/lib/nokogiri/3.2/nokogiri.bundle" id="tmp/x86_64-darwin/stage/lib/nokogiri/3.2/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20" id="tmp/x86_64-darwin20" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/nokogiri" id="tmp/x86_64-darwin20/nokogiri" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/nokogiri/2.7.5" id="tmp/x86_64-darwin20/nokogiri/2.7.5" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/nokogiri/2.7.5/.rake-compiler-siteconf.rb" id="tmp/x86_64-darwin20/nokogiri/2.7.5/.rake-compiler-siteconf.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/nokogiri/2.7.5/Makefile" id="tmp/x86_64-darwin20/nokogiri/2.7.5/Makefile" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/nokogiri/2.7.5/nokogiri.bundle" id="tmp/x86_64-darwin20/nokogiri/2.7.5/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage" id="tmp/x86_64-darwin20/stage" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/Gemfile" id="tmp/x86_64-darwin20/stage/Gemfile" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/LICENSE-DEPENDENCIES.md" id="tmp/x86_64-darwin20/stage/LICENSE-DEPENDENCIES.md" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/LICENSE.md" id="tmp/x86_64-darwin20/stage/LICENSE.md" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/README.md" id="tmp/x86_64-darwin20/stage/README.md" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/bin" id="tmp/x86_64-darwin20/stage/bin" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/bin/nokogiri" id="tmp/x86_64-darwin20/stage/bin/nokogiri" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/dependencies.yml" id="tmp/x86_64-darwin20/stage/dependencies.yml" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext" id="tmp/x86_64-darwin20/stage/ext" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri" id="tmp/x86_64-darwin20/stage/ext/nokogiri" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/depend" id="tmp/x86_64-darwin20/stage/ext/nokogiri/depend" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/extconf.rb" id="tmp/x86_64-darwin20/stage/ext/nokogiri/extconf.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/gumbo.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/gumbo.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_document.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_document.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_element_description.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_element_description.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_entity_lookup.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_entity_lookup.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_sax_parser_context.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_sax_parser_context.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_sax_push_parser.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/html4_sax_push_parser.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/libxml2_backwards_compat.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/libxml2_backwards_compat.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/nokogiri.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/nokogiri.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/nokogiri.h" id="tmp/x86_64-darwin20/stage/ext/nokogiri/nokogiri.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/test_global_handlers.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/test_global_handlers.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_attr.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_attr.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_attribute_decl.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_attribute_decl.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_cdata.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_cdata.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_comment.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_comment.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_document.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_document.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_document_fragment.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_document_fragment.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_dtd.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_dtd.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_element_content.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_element_content.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_element_decl.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_element_decl.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_encoding_handler.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_encoding_handler.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_entity_decl.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_entity_decl.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_entity_reference.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_entity_reference.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_namespace.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_namespace.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_node.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_node.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_node_set.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_node_set.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_processing_instruction.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_processing_instruction.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_reader.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_reader.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_relax_ng.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_relax_ng.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_parser.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_parser.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_parser_context.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_parser_context.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_push_parser.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_sax_push_parser.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_schema.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_schema.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_syntax_error.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_syntax_error.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_text.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_text.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_xpath_context.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xml_xpath_context.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/ext/nokogiri/xslt_stylesheet.c" id="tmp/x86_64-darwin20/stage/ext/nokogiri/xslt_stylesheet.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser" id="tmp/x86_64-darwin20/stage/gumbo-parser" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/CHANGES.md" id="tmp/x86_64-darwin20/stage/gumbo-parser/CHANGES.md" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/Makefile" id="tmp/x86_64-darwin20/stage/gumbo-parser/Makefile" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/THANKS" id="tmp/x86_64-darwin20/stage/gumbo-parser/THANKS" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src" id="tmp/x86_64-darwin20/stage/gumbo-parser/src" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/Makefile" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/Makefile" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/README.md" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/README.md" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/ascii.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/ascii.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/ascii.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/ascii.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/attribute.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/attribute.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/attribute.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/attribute.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.rl" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/char_ref.rl" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/error.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/error.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/error.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/error.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/foreign_attrs.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/foreign_attrs.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/foreign_attrs.gperf" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/foreign_attrs.gperf" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/insertion_mode.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/insertion_mode.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/macros.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/macros.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/nokogiri_gumbo.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/nokogiri_gumbo.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/parser.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/parser.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/parser.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/parser.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/replacement.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/replacement.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_buffer.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_buffer.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_buffer.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_buffer.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_piece.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/string_piece.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_attrs.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_attrs.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_attrs.gperf" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_attrs.gperf" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_tags.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_tags.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_tags.gperf" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/svg_tags.gperf" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.gperf" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.gperf" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tag_lookup.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_buffer.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_buffer.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_buffer.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_buffer.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_type.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/token_type.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer_states.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/tokenizer_states.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/utf8.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/utf8.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/utf8.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/utf8.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/util.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/util.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/util.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/util.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/vector.c" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/vector.c" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/gumbo-parser/src/vector.h" id="tmp/x86_64-darwin20/stage/gumbo-parser/src/vector.h" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib" id="tmp/x86_64-darwin20/stage/lib" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri" id="tmp/x86_64-darwin20/stage/lib/nokogiri" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/class_resolver.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/class_resolver.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/node.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/node.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser.y" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser.y" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser_extras.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/parser_extras.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/syntax_error.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/syntax_error.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/tokenizer.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/tokenizer.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/tokenizer.rex" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/tokenizer.rex" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/css/xpath_visitor.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/css/xpath_visitor.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/decorators" id="tmp/x86_64-darwin20/stage/lib/nokogiri/decorators" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/decorators/slop.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/decorators/slop.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/encoding_handler.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/encoding_handler.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/extension.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/extension.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/gumbo.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/gumbo.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/builder.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/builder.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/document.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/document.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/document_fragment.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/document_fragment.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/element_description.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/element_description.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/element_description_defaults.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/element_description_defaults.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/encoding_reader.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/encoding_reader.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/entity_lookup.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/entity_lookup.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/parser.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/parser.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/parser_context.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/parser_context.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/push_parser.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html4/sax/push_parser.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html5" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html5" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html5.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html5.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/document.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/document.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/document_fragment.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/document_fragment.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/node.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/html5/node.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby" id="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby/dependencies.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby/dependencies.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby/nokogiri_jars.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/jruby/nokogiri_jars.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/nokogiri.bundle" id="tmp/x86_64-darwin20/stage/lib/nokogiri/nokogiri.bundle" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/syntax_error.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/syntax_error.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/version" id="tmp/x86_64-darwin20/stage/lib/nokogiri/version" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/version.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/version.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/version/constant.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/version/constant.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/version/info.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/version/info.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/attr.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/attr.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/attribute_decl.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/attribute_decl.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/builder.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/builder.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/cdata.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/cdata.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/character_data.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/character_data.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/document.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/document.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/document_fragment.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/document_fragment.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/dtd.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/dtd.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/element_content.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/element_content.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/element_decl.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/element_decl.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/entity_decl.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/entity_decl.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/entity_reference.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/entity_reference.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/namespace.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/namespace.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node/save_options.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node/save_options.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node_set.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/node_set.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/notation.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/notation.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/parse_options.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/parse_options.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp/character_data.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp/character_data.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp/node.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/pp/node.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/processing_instruction.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/processing_instruction.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/reader.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/reader.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/relax_ng.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/relax_ng.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/document.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/document.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/parser.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/parser.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/parser_context.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/parser_context.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/push_parser.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/sax/push_parser.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/schema.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/schema.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/searchable.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/searchable.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/syntax_error.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/syntax_error.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/text.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/text.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath/syntax_error.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath/syntax_error.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath_context.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xml/xpath_context.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt/stylesheet.rb" id="tmp/x86_64-darwin20/stage/lib/nokogiri/xslt/stylesheet.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/xsd" id="tmp/x86_64-darwin20/stage/lib/xsd" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/xsd/xmlparser" id="tmp/x86_64-darwin20/stage/lib/xsd/xmlparser" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-darwin20/stage/lib/xsd/xmlparser/nokogiri.rb" id="tmp/x86_64-darwin20/stage/lib/xsd/xmlparser/nokogiri.rb" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-linux/stage/lib/nokogiri/2.7/nokogiri.so" id="tmp/x86_64-linux/stage/lib/nokogiri/2.7/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-linux/stage/lib/nokogiri/3.0/nokogiri.so" id="tmp/x86_64-linux/stage/lib/nokogiri/3.0/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-linux/stage/lib/nokogiri/3.1/nokogiri.so" id="tmp/x86_64-linux/stage/lib/nokogiri/3.1/nokogiri.so" />
+          <RakeTaskImpl description="" fullCommand="tmp/x86_64-linux/stage/lib/nokogiri/3.2/nokogiri.so" id="tmp/x86_64-linux/stage/lib/nokogiri/3.2/nokogiri.so" />
+        </subtasks>
+      </RakeTaskImpl>
     </option>
   </component>
 </module>
